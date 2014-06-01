@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="dw_configurator.config.example" class="Dw\Bundle\ConfiguratorBundle\Lib\Config">
+            <tag name="dw_configurator.config"/>
+        </service>
+
+        <service id="dw_configurator.config.example2" class="Dw\Bundle\ConfiguratorBundle\Lib\Config2">
+            <tag name="dw_configurator.config"/>
+        </service>
+
+        <service id="dw_configurator.configurator" class="Dw\Bundle\ConfiguratorBundle\Lib\Configurator">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
+        <service id="dw_configurator.form" class="Dw\Bundle\ConfiguratorBundle\Form\FormConfigGenerator">
+            <argument type="service" id="dw_configurator.configurator"/>
+            <argument type="service" id="form.factory"/>
+        </service>
+
+        <service id="dw_configurator.twig" class="Dw\Bundle\ConfiguratorBundle\Twig\ConfiguratorExtension">
+            <argument type="service" id="dw_configurator.configurator" />
+            <tag name="twig.extension" />
+        </service>
+    </services>
+
+</container>
