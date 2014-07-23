@@ -49,11 +49,16 @@ class Configurator
 
     public function getParam($param)
     {
-        if (!isset($this->dataConfigs[$param])) {
+        if (!array_key_exists($param, $this->dataConfigs)) {
             throw new UndefinedParamException(sprintf('Param "%s" doesn\'t exist', $param));
         }
 
         return $this->dataConfigs[$param];
+    }
+
+    public function getParams()
+    {
+        return $this->dataConfigs;
     }
 
     public function get($param)

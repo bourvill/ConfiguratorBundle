@@ -5,14 +5,6 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="dw_configurator.config.example" class="Dw\Bundle\ConfiguratorBundle\Lib\Config">
-            <tag name="dw_configurator.config"/>
-        </service>
-
-        <service id="dw_configurator.config.example2" class="Dw\Bundle\ConfiguratorBundle\Lib\Config2">
-            <tag name="dw_configurator.config"/>
-        </service>
-
         <service id="dw_configurator.configurator" class="Dw\Bundle\ConfiguratorBundle\Lib\Configurator">
             <argument type="service" id="doctrine.orm.entity_manager"/>
         </service>
