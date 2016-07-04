@@ -50,7 +50,7 @@ class Config
      *
      * @param string $param
      *
-     * @return Configuration
+     * @return Config
      */
     public function setParam($param)
     {
@@ -74,7 +74,7 @@ class Config
      *
      * @param string $paramValue
      *
-     * @return Configuration
+     * @return Config
      */
     public function setParamValue($paramValue)
     {

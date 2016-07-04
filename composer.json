@@ -19,7 +19,8 @@
     "symfony/form": "3.0.*",
     "doctrine/orm": ">=2.5.0",
     "doctrine/common": ">=2.5.0",
-    "symfony/twig-bundle": "3.1.*"
+    "symfony/twig-bundle": "3.1.*",
+    "fzaninotto/faker": "^1.6"
   },
   "autoload": {
     "psr-0": {
