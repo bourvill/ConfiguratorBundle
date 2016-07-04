@@ -11,12 +11,9 @@ class ConfiguratorConfigCompilerPass implements CompilerPassInterface
 
     public function process(ContainerBuilder $container)
     {
-        $tagServices = $container->findTaggedServiceIds('dw_configurator.config');
-
         $configurator = $container->getDefinition('dw_configurator.configurator');
 
-        foreach($tagServices as $id => $attributes) {
-
+        foreach ($container->findTaggedServiceIds('dw_configurator.config') as $id => $attributes) {
             $configurator->addMethodCall(
                 'addConfig',
                 array(

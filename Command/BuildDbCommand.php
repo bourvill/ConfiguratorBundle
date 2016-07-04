@@ -21,7 +21,6 @@ class BuildDbCommand extends ContainerAwareCommand
         $configurator = $this->getContainer()->get('dw_configurator.configurator');
         $objectManager = $this->getContainer()->get('doctrine.orm.entity_manager');
 
-
         $change = 0;
         foreach ($configurator->getConfigs() as $configs) {
             foreach ($configs as $paramName => $config) {
@@ -47,7 +46,5 @@ class BuildDbCommand extends ContainerAwareCommand
 
         $objectManager->flush();
     }
-
-
 }
  
