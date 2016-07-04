@@ -22,6 +22,21 @@ class ConfiguratorExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('dw_configurator', $extension->getName());
     }
 
+    public function testGetFunctions()
+    {
+        $extension = new ConfiguratorExtension($this->configurator->reveal());
+
+        $functions = $extension->getFunctions();
+        $this->assertEquals(1, count($functions));
+
+        $functionParam = $functions[0];
+        $functionParamCallable = $functionParam->getCallable();
+
+        $this->assertEquals('param', $functionParam->getName());
+        $this->assertEquals(get_class($extension), get_class($functionParamCallable[0]));
+        $this->assertEquals('getParam', $functionParamCallable[1]);
+    }
+
     public function testGetParam()
     {
         $extension = new ConfiguratorExtension($this->configurator->reveal());

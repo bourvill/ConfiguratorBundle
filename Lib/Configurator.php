@@ -42,6 +42,10 @@ class Configurator
             return $this->configs;
         }
 
+        if (!isset($this->configs[$config_name])) {
+            throw new UndefinedConfigException(sprintf('Config "%s" doesn\'t exist', $config_name));
+        }
+
         return array(
             $this->configs[$config_name],
         );
