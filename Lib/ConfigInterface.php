@@ -8,4 +8,3 @@ interface ConfigInterface
 
     public function getName();
 }
- 

@@ -5,7 +5,6 @@ namespace Dw\Bundle\ConfiguratorBundle\Command;
 use Dw\Bundle\ConfiguratorBundle\Entity\Config;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class BuildDbCommand extends ContainerAwareCommand
@@ -28,7 +27,7 @@ class BuildDbCommand extends ContainerAwareCommand
                     ->findOneBy(array('param' => $paramName));
 
                 if (!$param) {
-                    $change++;
+                    ++$change;
 
                     $output->writeln(sprintf('Create "%s"', $paramName));
 
@@ -47,4 +46,3 @@ class BuildDbCommand extends ContainerAwareCommand
         $objectManager->flush();
     }
 }
- 

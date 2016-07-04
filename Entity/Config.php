@@ -5,7 +5,7 @@ namespace Dw\Bundle\ConfiguratorBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Configuration
+ * Configuration.
  *
  * @ORM\Table(name="dw_config")
  * @ORM\Entity
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Config
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -35,11 +35,10 @@ class Config
      */
     private $paramValue;
 
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -47,22 +46,23 @@ class Config
     }
 
     /**
-     * Set param
+     * Set param.
      *
      * @param string $param
+     *
      * @return Configuration
      */
     public function setParam($param)
     {
         $this->param = $param;
-    
+
         return $this;
     }
 
     /**
-     * Get param
+     * Get param.
      *
-     * @return string 
+     * @return string
      */
     public function getParam()
     {
@@ -70,22 +70,23 @@ class Config
     }
 
     /**
-     * Set paramValue
+     * Set paramValue.
      *
      * @param string $paramValue
+     *
      * @return Configuration
      */
     public function setParamValue($paramValue)
     {
         $this->paramValue = $paramValue;
-    
+
         return $this;
     }
 
     /**
-     * Get paramValue
+     * Get paramValue.
      *
-     * @return string 
+     * @return string
      */
     public function getParamValue()
     {

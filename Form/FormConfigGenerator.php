@@ -44,4 +44,3 @@ class FormConfigGenerator
             ->getForm();
     }
 }
- 

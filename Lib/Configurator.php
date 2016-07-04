@@ -43,7 +43,7 @@ class Configurator
         }
 
         return array(
-            $this->configs[$config_name]
+            $this->configs[$config_name],
         );
     }
 
@@ -85,4 +85,3 @@ class Configurator
             ->execute();
     }
 }
- 

@@ -8,7 +8,6 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class ConfiguratorConfigCompilerPass implements CompilerPassInterface
 {
-
     public function process(ContainerBuilder $container)
     {
         $configurator = $container->getDefinition('dw_configurator.configurator');
@@ -17,10 +16,9 @@ class ConfiguratorConfigCompilerPass implements CompilerPassInterface
             $configurator->addMethodCall(
                 'addConfig',
                 array(
-                    new Reference($id)
+                    new Reference($id),
                 )
             );
         }
     }
 }
- 
