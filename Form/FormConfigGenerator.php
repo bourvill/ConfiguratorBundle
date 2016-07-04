@@ -25,7 +25,7 @@ class FormConfigGenerator
 
     private function build($config_name = null)
     {
-        $form = $this->formFactory->createBuilder('form', $this->configurator->getParams());
+        $form = $this->formFactory->createBuilder('Symfony\Component\Form\Extension\Core\Type\FormType', $this->configurator->getParams());
 
         foreach ($this->configurator->getConfigs($config_name) as $configs) {
             foreach ($configs as $name => $config) {
