@@ -12,7 +12,7 @@ class ConfiguratorExtensionTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->configurator = $this->prophesize('\Dw\Bundle\ConfiguratorBundle\Lib\Configurator');
-        $this->faker        = \Faker\Factory::create();
+        $this->faker = \Faker\Factory::create();
     }
 
     public function testGetName()
