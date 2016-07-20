@@ -6,6 +6,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class Configurator
 {
+    private $loaded = false;
     private $configs = array();
 
     private $dataConfigs = array();
@@ -17,11 +18,9 @@ class Configurator
     public function __construct(ObjectManager $objectManager)
     {
         $this->objectManager = $objectManager;
-
-        $this->loadDatas();
     }
 
-    private function loadDatas()
+    private function loadData()
     {
         $configs = $this->objectManager->getRepository('DwConfiguratorBundle:Config')
             ->findAll();
@@ -53,15 +52,20 @@ class Configurator
 
     public function getParam($param)
     {
-        if (!array_key_exists($param, $this->dataConfigs)) {
+        $loadedParams = $this->getParams();
+        if (!array_key_exists($param, $loadedParams)) {
             throw new UndefinedParamException(sprintf('Param "%s" doesn\'t exist', $param));
         }
 
-        return $this->dataConfigs[$param];
+        return $loadedParams[$param];
     }
 
     public function getParams()
     {
+        if(false === $this->loaded) {
+            $this->loadData();
+            $this->loaded = true;
+        }
         return $this->dataConfigs;
     }
 
@@ -72,7 +76,8 @@ class Configurator
 
     public function update($formData)
     {
-        foreach (array_diff($formData, $this->dataConfigs) as $param => $param_value) {
+        $loadedParams = $this->getParams();
+        foreach (array_diff($formData, $loadedParams) as $param => $param_value) {
             $this->updateParam($param, $param_value);
         }
     }

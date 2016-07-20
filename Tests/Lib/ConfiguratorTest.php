@@ -18,7 +18,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAllConfigs()
     {
-        $this->generateConfig();
+        $this->generateConfig(array(), false);
 
         $configurator = new Configurator($this->objectManager);
 
@@ -27,7 +27,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 
     public function testAddConfig()
     {
-        $this->generateConfig();
+        $this->generateConfig(array(), false);
         $configName = $this->faker->word;
         $configs    = array(
             'site_title' => array(
@@ -59,7 +59,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetUndefinedConfigs()
     {
-        $this->generateConfig();
+        $this->generateConfig(array(), false);
 
         $configurator = new Configurator($this->objectManager);
 
@@ -68,7 +68,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
 
     public function testGetConfigsWithValidArg()
     {
-        $this->generateConfig();
+        $this->generateConfig(array(), false);
         $configName = $this->faker->word;
         $configs    = array(
             'site_title' => array(
@@ -164,7 +164,7 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
         \Mockery::close();
     }
 
-    public function generateConfig($return = array())
+    public function generateConfig($return = array(), $loadParam = true)
     {
         $datas = array();
 
@@ -176,6 +176,8 @@ class ConfiguratorTest extends \PHPUnit_Framework_TestCase
             $datas[] = $mockConfig;
         }
 
-        $this->objectManager->shouldReceive('getRepository->findAll')->once()->andReturn($datas);
+        if(true === $loadParam) {
+            $this->objectManager->shouldReceive('getRepository->findAll')->once()->andReturn($datas);
+        }
     }
 }
